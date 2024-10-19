@@ -31,15 +31,21 @@ export default function TextBoxPage() {
     try {
       const response = await axios.post('http://localhost:5000/api/accounts/login', formData);
       console.log(response.status);
+      // console.log(response.data.message)
       message = response.data.message;
       if (response.status == 200) {
         Router.push('/profile');
-      } else {
-        alert(message);
       }
     } catch (err) {
-      console.error(err);
-      setError('Network Error.');
+      if (err.response) {
+        // Handle the error response (e.g., status code 400)
+        console.log(err.response.data.message); 
+        alert(err.response.data.message);
+      } else {
+        // Handle network errors or unexpected errors
+        console.error(err);
+        setError('Network Error.');
+      }
     } finally {
       setLoading(false);
     }
