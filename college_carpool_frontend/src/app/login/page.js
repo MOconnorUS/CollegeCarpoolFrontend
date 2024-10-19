@@ -23,20 +23,20 @@ export default function TextBoxPage() {
     setError(null);
 
     const formData = {
-        userName: inputValue1,
+        username: inputValue1,
         password: inputValue2,
-      };
-    
-      try {
-        const response = await axios.post('http://localhost:5000/api/accounts/login', formData);
-        console.log(response.data);
-        alert('Account create successfully!');
-      } catch (err) {
-        console.error(err);
-        setError('Incorrect username or password.');
-      } finally {
-        setLoading(false);
-      }
+    };
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/accounts/login', formData);
+      console.log(response.data);
+      alert('Account create successfully!');
+    } catch (err) {
+      console.error(err);
+      setError('Incorrect username or password.');
+    } finally {
+      setLoading(false);
+    }
   };
 
 //   const formData = {
