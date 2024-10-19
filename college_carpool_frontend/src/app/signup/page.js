@@ -2,6 +2,7 @@
 'use client';
 import { useState } from 'react';
 import axios from 'axios';
+import { userRouter } from 'next/router';
 
 export default function TextBoxPage() {
   const [inputValue1, setInputValue1] = useState('');
@@ -48,11 +49,16 @@ export default function TextBoxPage() {
     
       try {
         const response = await axios.post('http://localhost:5000/api/accounts', formData);
-        console.log(response.data);
-        alert('Account create successfully!');
+        console.log(response.status);
+        message = response.data.message;
+        if (response.status == 200) {
+          Router.push('/profile');
+        } else {
+          alert(message);
+        }
       } catch (err) {
         console.error(err);
-        setError('Incorrect username or password.');
+        setError('Network Error');
       } finally {
         setLoading(false);
       }
