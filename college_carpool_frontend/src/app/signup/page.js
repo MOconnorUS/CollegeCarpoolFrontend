@@ -64,6 +64,10 @@ export default function TextBoxPage() {
     }
   };
 
+  const handleBackToHome = () => {
+    router.push('/');
+  }
+
   return (
     <div style={{ padding: '20px' }}>
       <h1>Sign Up</h1>
@@ -140,6 +144,9 @@ export default function TextBoxPage() {
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {message && <p style={{ color: 'green' }}>{message}</p>}
+      <button 
+      onClick={handleBackToHome}
+      style={{ marginTop: '10px', padding: '5p' }}>Back to Rides</button>
     </div>
   );
 }
