@@ -41,7 +41,7 @@ export default function TextBoxPage() {
     };
 
     try {
-      const response = await axios.post('http://localhost:8000/api/accounts', formData);
+      const response = await axios.post('http://localhost:7777/api/accounts', formData);
       console.log(response.status);
       console.log(response.data);
 
